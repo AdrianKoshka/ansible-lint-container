@@ -1,0 +1,14 @@
+language: generic
+
+services:
+  - docker
+
+script:
+  - docker build -t quay.io/adrianlucrececeleste/ansible-lint:$TRAVIS_BRANCH -t quay.io/adrianlucrececeleste/ansible-lint:latest .
+
+deploy:
+  - provider: script
+    script: bash docker_push
+    on:
+      tags: true
+      branch: master
