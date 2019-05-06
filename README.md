@@ -1,4 +1,4 @@
-# [Ansible Lint](https://github.com/ansible/ansible-lint) Container
+# [Ansible Lint](https://github.com/ansible/ansible-lint) Container [![Build Status](https://travis-ci.org/AdrianKoshka/ansible-lint-container.svg?branch=master)](https://travis-ci.org/AdrianKoshka/ansible-lint-container)
 
 `ansible-lint`, in a container!
 
