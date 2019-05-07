@@ -1,0 +1,50 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Container",
+            "type": "process",
+            "linux": {
+                "command": "buildah",
+                "args": [
+                    "bud",
+                    "-t",
+                    "quay.io/adrianlucrececeleste/ansible-lint:vscode",
+                    "."
+                ]
+            },
+            "windows": {
+                "command": "docker",
+                "args": [
+                    "build",
+                    "-t",
+                    "quay.io/adrianlucrececeleste/ansible-lint:vscode",
+                    "."
+                ]
+            }
+        },
+        {
+            "label": "Push container to quay.io",
+            "type": "process",
+            "dependsOn": [
+                "Build Container"
+            ],
+            "linux": {
+                "command": "buildah",
+                "args": [
+                    "push",
+                    "quay.io/adrianlucrececeleste/ansible-lint:vscode"
+                ]
+            },
+            "windows": {
+                "command": "docker",
+                "args": [
+                    "push",
+                    "quay.io/adrianlucrececeleste/ansible-lint:vscode"
+                ]
+            }
+        }
+    ]
+}
