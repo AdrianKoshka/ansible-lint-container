@@ -14,7 +14,7 @@ steps:
   displayName: Login to Quay.io
   inputs:
     command: login
-    containerRegistry: quay.io/adrianlucrececeleste/ansible-lint
+    containerRegistry: Quay.io
 - task: Docker@2
   displayName: Build and Push
   inputs:
