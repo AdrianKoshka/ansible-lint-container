@@ -1,0 +1,25 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: Docker@2
+  displayName: Login to Quay.io
+  inputs:
+    command: login
+    containerRegistry: quay.io/adrianlucrececeleste/ansible-lint
+- task: Docker@2
+  displayName: Build and Push
+  inputs:
+    command: buildAndPush
+    repository: adrianlucrececeleste/ansible-lint
+    tags: |
+      '$(Build.BuildId)'
+      latest
