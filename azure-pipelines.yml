@@ -14,12 +14,12 @@ steps:
   displayName: Login to Quay.io
   inputs:
     command: login
-    containerRegistry: quay.io/adrianlucrececeleste/ansible-lint
+    containerRegistry: Quay.io
 - task: Docker@2
-  displayName: Build and Push
+  displayName: Build
   inputs:
-    command: buildAndPush
+    command: build
     repository: adrianlucrececeleste/ansible-lint
     tags: |
-      '$(Build.BuildId)'
+      $(Build.BuildId)
       latest
